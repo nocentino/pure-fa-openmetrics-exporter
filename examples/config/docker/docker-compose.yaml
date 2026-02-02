@@ -1,13 +1,4 @@
 services:
-  pure-fa-om-exporter:
-    image: quay.io/purestorage/pure-fa-om-exporter:latest
-    command: 
-      - '--port=9490'
-    depends_on: 
-      - prometheus
-    ports:
-      - 9490:9490
-    restart: unless-stopped
   prometheus:
     image: prom/prometheus:latest
     command:
@@ -26,7 +17,6 @@ services:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin!
     depends_on: 
-      - pure-fa-om-exporter
       - prometheus
     ports:
       - 3000:3000
