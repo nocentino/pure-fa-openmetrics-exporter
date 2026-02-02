@@ -1,98 +1,74 @@
 global:
-  scrape_interval:     60s
-  scrape_timeout:      50s
+  scrape_interval: '15s'
+  scrape_timeout: '10s'
 scrape_configs:
-  - job_name: 'purestorage-fa'
+
+# Prometheus configuration for Pure Storage FlashArray1
+
+  - job_name: 'purestorage-fa1'
+    scheme: https
+    tls_config:
+      insecure_skip_verify: true
     metrics_path: /metrics/array
     authorization:
       credentials: <YOUR_API_TOKEN>
     params:
-      endpoint: [<YOUR_FLASHARRAY_IP>]
-
+      namespace: ['purefa']
     static_configs:
-    - targets:
-      - pure-fa-om-exporter:9490
+    - targets: ['<YOUR_FLASHARRAY_FQDN_OR_IP>']
       labels:
         location: US
         site: TestSite
         instance: FlashArray1
         env: 'Test Lab'
 
-  - job_name: 'purestorage-fa_volumes'
+  - job_name: 'purestorage-fa1_volumes'
+    scheme: https
+    tls_config:
+      insecure_skip_verify: true
     metrics_path: /metrics/volumes
     authorization:
       credentials: <YOUR_API_TOKEN>
     params:
-      endpoint: [<YOUR_FLASHARRAY_IP>]
-
+      namespace: ['purefa']
     static_configs:
-    - targets:
-      - pure-fa-om-exporter:9490
+    - targets: ['<YOUR_FLASHARRAY_FQDN_OR_IP>']
       labels:
         location: US
         site: TestSite
         instance: FlashArray1
         env: 'Test Lab'
 
-  - job_name: 'purestorage-fa_hosts'
+  - job_name: 'purestorage-fa1_hosts'
+    scheme: https
+    tls_config:
+      insecure_skip_verify: true
     metrics_path: /metrics/hosts
     authorization:
       credentials: <YOUR_API_TOKEN>
     params:
-      endpoint: [<YOUR_FLASHARRAY_IP>]
-
+      namespace: ['purefa']
     static_configs:
-    - targets:
-      - pure-fa-om-exporter:9490
+    - targets: ['<YOUR_FLASHARRAY_FQDN_OR_IP>']
       labels:
         location: US
         site: TestSite
         instance: FlashArray1
         env: 'Test Lab'
-        
-  - job_name: 'purestorage-fa_pods'
-    metrics_path: /metrics/pods
-    authorization:
-      credentials: <YOUR_API_TOKEN>
-    params:
-      endpoint: [<YOUR_FLASHARRAY_IP>]
 
-    static_configs:
-    - targets:
-      - pure-fa-om-exporter:9490
-      labels:
-        location: US
-        site: TestSite
-        instance: FlashArray1
-        env: 'Test Lab'
- 
-  - job_name: 'purestorage-fa_directories'
-    metrics_path: /metrics/directories
-    authorization:
-      credentials: <YOUR_API_TOKEN>
-    params:
-      endpoint: [<YOUR_FLASHARRAY_IP>]
-
-    static_configs:
-    - targets:
-      - pure-fa-om-exporter:9490
-      labels:
-        location: US
-        site: TestSite
-        instance: FlashArray1
-        env: 'Test Lab'
- 
+# For FlashArray2
 
   - job_name: 'purestorage-fa2'
+    scheme: https
+    tls_config:
+      insecure_skip_verify: true
     metrics_path: /metrics/array
     authorization:
       credentials: <YOUR_API_TOKEN>
     params:
-      endpoint: [<YOUR_FLASHARRAY_IP>]
-
+      namespace: ['purefa']
     static_configs:
-    - targets:
-      - pure-fa-om-exporter:9490
+    - targets: ['<YOUR_FLASHARRAY_FQDN_OR_IP>']
       labels:
         location: US
         site: TestSite
@@ -100,15 +76,16 @@ scrape_configs:
         env: 'Test Lab'
 
   - job_name: 'purestorage-fa2_volumes'
+    scheme: https
+    tls_config:
+      insecure_skip_verify: true
     metrics_path: /metrics/volumes
     authorization:
       credentials: <YOUR_API_TOKEN>
     params:
-      endpoint: [<YOUR_FLASHARRAY_IP>]
-
+      namespace: ['purefa']
     static_configs:
-    - targets:
-      - pure-fa-om-exporter:9490
+    - targets: ['<YOUR_FLASHARRAY_FQDN_OR_IP>']
       labels:
         location: US
         site: TestSite
@@ -116,47 +93,16 @@ scrape_configs:
         env: 'Test Lab'
 
   - job_name: 'purestorage-fa2_hosts'
+    scheme: https
+    tls_config:
+      insecure_skip_verify: true
     metrics_path: /metrics/hosts
     authorization:
       credentials: <YOUR_API_TOKEN>
     params:
-      endpoint: [<YOUR_FLASHARRAY_IP>]
-
+      namespace: ['purefa']
     static_configs:
-    - targets:
-      - pure-fa-om-exporter:9490
-      labels:
-        location: US
-        site: TestSite
-        instance: FlashArray2
-        env: 'Test Lab'
-        
-  - job_name: 'purestorage-fa2_pods'
-    metrics_path: /metrics/pods
-    authorization:
-      credentials: <YOUR_API_TOKEN>
-    params:
-      endpoint: [<YOUR_FLASHARRAY_IP>]
-
-    static_configs:
-    - targets:
-      - pure-fa-om-exporter:9490
-      labels:
-        location: US
-        site: TestSite
-        instance: FlashArray2
-        env: 'Test Lab'
- 
-  - job_name: 'purestorage-fa2_directories'
-    metrics_path: /metrics/directories
-    authorization:
-      credentials: <YOUR_API_TOKEN>
-    params:
-      endpoint: [<YOUR_FLASHARRAY_IP>]
-
-    static_configs:
-    - targets:
-      - pure-fa-om-exporter:9490
+    - targets: ['<YOUR_FLASHARRAY_FQDN_OR_IP>']
       labels:
         location: US
         site: TestSite
